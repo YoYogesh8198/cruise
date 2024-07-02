@@ -28,7 +28,7 @@ function checkEmail(value) {
 }
 
 function checkValidateMobile(input) {
-  console.log(input);
+  // console.log(input);
   // var regex = /^[0-9]*$/;
   var regex = /^[0-9]{10}$/;
   if (!regex.test(input) || input.length > 10) {
@@ -112,8 +112,8 @@ $(document).ready(function () {
     child_count = parseInt(child_count, 10);
     infant_count = parseInt(infant_count, 10);
     var total_number_of_pax = adult_count + child_count + infant_count;
-    console.log(total_number_of_pax);
-    console.log(adult_count, child_count, infant_count);
+    // console.log(total_number_of_pax);
+    // console.log(adult_count, child_count, infant_count);
     if (
       total_passenger == "" ||
       total_passenger == null ||

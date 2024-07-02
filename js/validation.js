@@ -18,6 +18,8 @@ $(function () {
     }
   });
 });
+
+// * validation for border color change when enter name
 // function show_name(value) {
 //   //   console.log(value);
 //   var nameRegex =

@@ -186,8 +186,14 @@ $(function () {
     autoUpdateInput: false,
     autoclose: true,
   });
+
+  // Apply date range function
   $("#depart_date").on("apply.daterangepicker", function (ev, picker) {
-    $(this).val(picker.startDate.format("YYYY-MM-DD"));
+    $(this).val(
+      picker.startDate.format("YYYY-MM-DD") +
+        " - " +
+        picker.endDate.format("YYYY-MM-DD")
+    );
   });
 });
 

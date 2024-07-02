@@ -119,7 +119,6 @@ include_once 'db.php';
                                             <div class="d-grid col-md-4 me-4">Infant
                                                 <select class="form-select drop_in" aria-label=".form-select-lg example"
                                                     id="number_of_infant" name="number_of_infant">
-
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
                                                 </select>

@@ -1,7 +1,7 @@
 //! cant enter the number in name field
 $(function () {
   $("#name").keydown(function (e) {
-    if (e.shiftKey || e.ctrlKey || e.altKey) {
+    if (e.ctrlKey || e.altKey) {
       e.preventDefault();
     } else {
       var key = e.keyCode;
@@ -21,7 +21,7 @@ $(function () {
 });
 
 //! cant enter the alphabets number in mobile field
-$(document).ready(function() {
+$(document).ready(function () {
   $("#number").keydown(function (e) {
     if (e.shiftKey || e.ctrlKey || e.altKey) {
       e.preventDefault();
@@ -29,11 +29,11 @@ $(document).ready(function() {
       var key = e.keyCode || e.which;
       if (
         !(
-          key == 8 ||           
-          key == 32 ||         
-          key == 46 ||          
-          (key >= 35 && key <= 40) ||   
-          (key >= 48 && key <= 57)     
+          key == 8 ||
+          key == 32 ||
+          key == 46 ||
+          (key >= 35 && key <= 40) ||
+          (key >= 48 && key <= 57)
         )
       ) {
         e.preventDefault();
@@ -121,11 +121,11 @@ $(document).ready(function () {
     if (name == "" || name == null || name == undefined) {
       $(".error_1").show();
       ErrorMsg = true;
-    } 
+    }
     // else if (nameRegex.test(name) == false) {
     //   $(".error_1").html("Please Enter correct name*");
     //   $(".error_1").show();
-    // } 
+    // }
     else {
       $(".error_1").hide();
     }

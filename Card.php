@@ -224,7 +224,8 @@ include_once 'db.php';
                                 Additional Discounts
                             </div>
                             <div class="form-group custombtn col-md-6">
-                                <button type="submit" class="btn btn_submit " id="submit">Submit</button>
+                                <button type="submit" class="btn btn_submit " id="submit">
+                                    <i class="fa fa-circle-o-notch fa-spin"></i> Submit</button>
                             </div>
                         </div>
                     </div>

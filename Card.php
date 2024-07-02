@@ -8,9 +8,8 @@ include_once 'db.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-
+    <title>Cruise Details</title>
+    <link rel="icon" href="logo.png">
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -117,8 +116,8 @@ include_once 'db.php';
                                                 <select class="form-select drop_in" aria-label=".form-select-lg example"
                                                     id="number_of_infant" name="number_of_infant">
 
-                                                    <option value="0" >0</option>
-                                                    <option value="1" >1</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
                                                 </select>
                                             </div>
                                         </div>

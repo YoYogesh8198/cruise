@@ -1,3 +1,4 @@
+//! cant enter the number in name field
 $(function () {
   $("#name").keydown(function (e) {
     if (e.shiftKey || e.ctrlKey || e.altKey) {
@@ -11,6 +12,28 @@ $(function () {
           key == 46 ||
           (key >= 35 && key <= 40) ||
           (key >= 65 && key <= 90)
+        )
+      ) {
+        e.preventDefault();
+      }
+    }
+  });
+});
+
+//! cant enter the alphabets number in mobile field
+$(document).ready(function() {
+  $("#number").keydown(function (e) {
+    if (e.shiftKey || e.ctrlKey || e.altKey) {
+      e.preventDefault();
+    } else {
+      var key = e.keyCode || e.which;
+      if (
+        !(
+          key == 8 ||           
+          key == 32 ||         
+          key == 46 ||          
+          (key >= 35 && key <= 40) ||   
+          (key >= 48 && key <= 57)     
         )
       ) {
         e.preventDefault();
@@ -35,19 +58,21 @@ $(function () {
 //     $("#name").focus();
 //   }
 // }
-function checkEmail(value) {
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(value)) {
-    $("#email").css("border", "1px solid red");
-  } else {
-    $("#email").css("border", "1px solid #ced4da");
-  }
 
-  if (value.length == null || value.length == "") {
-    $("#email").css("border", "1px solid #ced4da");
-    $("#email").focus();
-  }
-}
+//* validation for border color change when mobile number enter
+// function checkEmail(value) {
+//   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   if (!emailRegex.test(value)) {
+//     $("#email").css("border", "1px solid red");
+//   } else {
+//     $("#email").css("border", "1px solid #ced4da");
+//   }
+
+//   if (value.length == null || value.length == "") {
+//     $("#email").css("border", "1px solid #ced4da");
+//     $("#email").focus();
+//   }
+// }
 
 function checkValidateMobile(input) {
   // console.log(input);

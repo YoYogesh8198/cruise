@@ -1,18 +1,38 @@
-function show_name(value) {
-  //   console.log(value);
-  var nameRegex =
-    /^([a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff][a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff ',.-]*)+$/;
-  if (!nameRegex.test(value)) {
-    $("#name").css("border", "1px solid red");
-  } else {
-    $("#name").css("border", "1px solid #ced4da");
-  }
+$(function () {
+  $("#name").keydown(function (e) {
+    if (e.shiftKey || e.ctrlKey || e.altKey) {
+      e.preventDefault();
+    } else {
+      var key = e.keyCode;
+      if (
+        !(
+          key == 8 ||
+          key == 32 ||
+          key == 46 ||
+          (key >= 35 && key <= 40) ||
+          (key >= 65 && key <= 90)
+        )
+      ) {
+        e.preventDefault();
+      }
+    }
+  });
+});
+// function show_name(value) {
+//   //   console.log(value);
+//   var nameRegex =
+//     /^([a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff][a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff ',.-]*)+$/;
+//   if (!nameRegex.test(value)) {
+//     $("#name").css("border", "1px solid red");
+//   } else {
+//     $("#name").css("border", "1px solid #ced4da");
+//   }
 
-  if (value.length == "" || value.length == null) {
-    $("#name").css("border", "1px solid #ced4da");
-    $("#name").focus();
-  }
-}
+//   if (value.length == "" || value.length == null) {
+//     $("#name").css("border", "1px solid #ced4da");
+//     $("#name").focus();
+//   }
+// }
 function checkEmail(value) {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(value)) {
@@ -74,10 +94,12 @@ $(document).ready(function () {
     if (name == "" || name == null || name == undefined) {
       $(".error_1").show();
       ErrorMsg = true;
-    } else if (nameRegex.test(name) == false) {
-      $(".error_1").html("Please Enter correct name*");
-      $(".error_1").show();
-    } else {
+    } 
+    // else if (nameRegex.test(name) == false) {
+    //   $(".error_1").html("Please Enter correct name*");
+    //   $(".error_1").show();
+    // } 
+    else {
       $(".error_1").hide();
     }
 
@@ -133,11 +155,12 @@ $(document).ready(function () {
         "Error: Number of infants cannot exceed number of adults. For example if you have two infants traveling with one adult, \n you can book the first infant as a lap baby under  infant fare  and book  a seat for the second infant under child fare."
       );
       $(".error_4").show();
-    }else if(total_passenger != total_number_of_pax){
-      $(".error_4").html("Error: Number of passengers does not match the number of adults,child, infant selected")
+    } else if (total_passenger != total_number_of_pax) {
+      $(".error_4").html(
+        "Error: Number of passengers does not match the number of adults,child, infant selected"
+      );
       $(".error_4").show();
-    }
-     else {
+    } else {
       $(".error_4").hide();
     }
 

@@ -36,9 +36,13 @@ include_once 'db.php';
                         <h2 class="mb-2 form_heding">Cruise Enquiry </h2>
                         <div class="form-row row mb-3">
                             <div class="form-group col-md-6 p_lzero">
-
+                                <!-- * we cant enter numeric  -->
                                 <input type="text" class="form-control input-sm" id="name" name="name"
-                                    onkeyup="show_name(this.value);" placeholder="Name" required>
+                                    placeholder="Name" required>
+
+                                <!--  for enter numberic but border color change -->
+                                <!-- <input type="text" class="form-control input-sm" id="name" name="name"
+                                    onkeyup="show_name(this.value);" placeholder="Name"  required> -->
                                 <div class="invalid-feedback error_1">
                                     Please enter your name.*
                                 </div>
@@ -224,8 +228,7 @@ include_once 'db.php';
                                 Additional Discounts
                             </div>
                             <div class="form-group custombtn col-md-6">
-                                <button type="submit" class="btn btn_submit " id="submit">
-                                    <i class="fa fa-circle-o-notch fa-spin"></i> Submit</button>
+                                <button type="submit" class="btn btn_submit " id="submit">Submit</button>
                             </div>
                         </div>
                     </div>

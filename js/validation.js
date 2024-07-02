@@ -58,6 +58,10 @@ $(document).ready(function () {
     var email_length = $("#email").val().length;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var total_passenger = $("#travelers").val();
+    var pax_type = $("input[name=pax_type]:checked").val();
+    var number_of_adults = $("#number_of_adults").val();
+    var number_of_children = $("#number_of_children").val();
+    var number_of_infant = $("#number_of_infant").val();
     var destination = $("#destination").val();
     var cruiselength = $("#cruise-length").val();
     var depart_date = $("#depart_date").val();
@@ -101,6 +105,15 @@ $(document).ready(function () {
     }
 
     //* traveler
+    adult_count = $("#number_of_adults option:selected").val();
+    child_count = $("#number_of_children option:selected").val();
+    infant_count = $("#number_of_infant option:selected").val();
+    adult_count = parseInt(adult_count, 10);
+    child_count = parseInt(child_count, 10);
+    infant_count = parseInt(infant_count, 10);
+    var total_number_of_pax = adult_count + child_count + infant_count;
+    console.log(total_number_of_pax);
+    console.log(adult_count, child_count, infant_count);
     if (
       total_passenger == "" ||
       total_passenger == null ||
@@ -108,7 +121,23 @@ $(document).ready(function () {
     ) {
       $(".error_4").show();
       ErrorMsg = true;
-    } else {
+    } else if (
+      total_passenger != null &&
+      total_passenger != "" &&
+      (pax_type == null || pax_type == "" || pax_type == "undefined")
+    ) {
+      $(".error_4").html("Error: Please choose the option below.");
+      $(".error_4").show();
+    } else if (infant_count > adult_count) {
+      $(".error_4").html(
+        "Error: Number of infants cannot exceed number of adults. For example if you have two infants traveling with one adult, \n you can book the first infant as a lap baby under  infant fare  and book  a seat for the second infant under child fare."
+      );
+      $(".error_4").show();
+    }else if(total_passenger != total_number_of_pax){
+      $(".error_4").html("Error: Number of passengers does not match the number of adults,child, infant selected")
+      $(".error_4").show();
+    }
+     else {
       $(".error_4").hide();
     }
 

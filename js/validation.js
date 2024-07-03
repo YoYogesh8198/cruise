@@ -59,21 +59,21 @@ $(document).ready(function () {
 //   }
 // }
 
+function checkEmail(value) {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(value)) {
+    $("#email").css("border", "1px solid red");
+  } else {
+    $("#email").css("border", "1px solid #ced4da");
+  }
+
+  if (value.length == null || value.length == "") {
+    $("#email").css("border", "1px solid #ced4da");
+    $("#email").focus();
+  }
+}
+
 //* validation for border color change when mobile number enter
-// function checkEmail(value) {
-//   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   if (!emailRegex.test(value)) {
-//     $("#email").css("border", "1px solid red");
-//   } else {
-//     $("#email").css("border", "1px solid #ced4da");
-//   }
-
-//   if (value.length == null || value.length == "") {
-//     $("#email").css("border", "1px solid #ced4da");
-//     $("#email").focus();
-//   }
-// }
-
 function checkValidateMobile(input) {
   // console.log(input);
   // var regex = /^[0-9]*$/;

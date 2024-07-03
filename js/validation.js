@@ -97,8 +97,8 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     var name = $("#name").val();
-    var nameRegex =
-      /^([a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff][a-zA-Z\u00c0-\u00d6\\u00d8-\u00f6\u00f8-\u00ff ',.-]*)+$/;
+    // var nameRegex =
+    //   /^([a-zA-Z\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff][a-zA-Z\u00c0-\u00d6\\u00d8-\u00f6\u00f8-\u00ff ',.-]*)+$/;
     var phone_number = $("#number").val();
     var phone_length = $("#number").val().length;
     var email = $("#email").val();
@@ -106,9 +106,16 @@ $(document).ready(function () {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var total_passenger = $("#travelers").val();
     var pax_type = $("input[name=pax_type]:checked").val();
-    var number_of_adults = $("#number_of_adults").val();
-    var number_of_children = $("#number_of_children").val();
-    var number_of_infant = $("#number_of_infant").val();
+    // var number_of_adults = $("#number_of_adults").val();
+    // var number_of_children = $("#number_of_children").val();
+    // var number_of_infant = $("#number_of_infant").val();
+    adult_count = $("#number_of_adults option:selected").val();
+    child_count = $("#number_of_children option:selected").val();
+    infant_count = $("#number_of_infant option:selected").val();
+    adult_count = parseInt(adult_count, 10);
+    child_count = parseInt(child_count, 10);
+    infant_count = parseInt(infant_count, 10);
+    var total_number_of_pax = adult_count + child_count + infant_count;
     var destination = $("#destination").val();
     var cruiselength = $("#cruise-length").val();
     var depart_date = $("#depart_date").val();
@@ -154,13 +161,7 @@ $(document).ready(function () {
     }
 
     //* traveler
-    adult_count = $("#number_of_adults option:selected").val();
-    child_count = $("#number_of_children option:selected").val();
-    infant_count = $("#number_of_infant option:selected").val();
-    adult_count = parseInt(adult_count, 10);
-    child_count = parseInt(child_count, 10);
-    infant_count = parseInt(infant_count, 10);
-    var total_number_of_pax = adult_count + child_count + infant_count;
+
     // console.log(total_number_of_pax);
     // console.log(adult_count, child_count, infant_count);
     if (

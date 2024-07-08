@@ -127,6 +127,7 @@ $(document).ready(function () {
     //* Name
     if (name == "" || name == null || name == undefined) {
       $(".error_1").show();
+      $(".invalid-feedback").show();
       ErrorMsg = true;
     }
     // else if (nameRegex.test(name) == false) {
@@ -244,6 +245,7 @@ $(document).ready(function () {
     }
 
     if (!ErrorMsg) {
+      console.log("done")
       $("#cruiseForm").submit();
     }
   });

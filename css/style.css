@@ -317,3 +317,37 @@
   background-color: white !important;
   opacity: 1;
 }
+.invalid-tooltip {
+  /* position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.1rem;
+  font-size: 0.875rem;
+  color: #fff;
+  background-color: var(--bs-danger);
+  border-radius: var(--bs-border-radius); */
+  background-color: white !important;
+  width: 143px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  margin-left: 107px !important;
+  visibility: hidden !important;
+  border-radius: 10px !important;
+  position: relative !important;
+  float: left !important;
+}
+.invalid-tooltip .error_1:after {
+  content: " " !important;
+  position: absolute !important;
+  right: 90px !important;
+  top: -15px !important;
+  border-top: none !important;
+  border-right: 10px solid transparent !important;
+  border-left: 10px solid transparent !important;
+  border-bottom: 15px solid white !important;
+ !important}

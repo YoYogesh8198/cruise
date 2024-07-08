@@ -1,6 +1,60 @@
 <?php
 include_once 'db.php';
+// for warning ->when warning show on UI
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // var_dump("data");
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $travelers = $_POST['travelers'];
+    $number_of_adults = isset($_POST['number_of_adults']) ? $_POST['number_of_adults'] : "";
+    $number_of_children = isset($_POST['number_of_children']) ? $_POST['number_of_children'] : "";
+    $number_of_infant = isset($_POST['number_of_infant']) ? $_POST['number_of_infant'] : "";
+    $regions = $_POST['regions'];
+    $cruise_menu = $_POST['cruise_menu'];
+    $departure_port = $_POST['departure_port'];
+    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : "";
+    $cruise_ship = $_POST['cruise_ship'];
+    $total_night = $_POST['total_night'];
+    $visit_place = $_POST['visit_place'];
+    $depart_date = $_POST['depart_date'];
+    $return_date = $_POST['return_date'];
+    $uniqueId = $_POST['uniqueId'];
 
+    $filter = ['uniqueId' => $uniqueId];
+    $options = [];
+    $query = new MongoDB\Driver\Query($filter, $options);
+    $rows = $client->executeQuery('Tables.details', $query);
+
+    if (count($rows->toArray()) == 0) {
+        $insert = new MongoDB\Driver\BulkWrite;
+        $insert->insert(
+            [
+                'uniqueId' => $uniqueId,
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'travelers' => $travelers,
+                "number_of_adults" => $number_of_adults,
+                "number_of_children" => $number_of_children,
+                "number_of_infant" => $number_of_infant,
+                'regions' => $regions,
+                'cruise_menu' => $cruise_menu,
+                'departure_port' => $departure_port,
+                "return_port" => $return_port,
+                'cruise_ship' => $cruise_ship,
+                'total_night' => $total_night,
+                "visit_place" => $visit_place,
+                "depart_date" => $depart_date,
+                "return_date" => $return_date,
+            ]
+        );
+        $client->executeBulkWrite('Tables.details', $insert);
+    }
+}
+$num = mt_rand(100000, 999999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +85,8 @@ include_once 'db.php';
 
         <div class="container p-0 enuiry_form">
             <div class="form-left">
-                <form id="enquiry-form" class="needs-validation" novalidate>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" class="needs-validation"
+                id="cruiseForm">
                     <div class="upperside">
                         <h2 class="mb-2 form_heding">Cruise Enquiry </h2>
                         <div class="form-row row mb-3">
@@ -50,7 +105,7 @@ include_once 'db.php';
                             <div class="form-group col-md-6">
 
                                 <input type="email" class="form-control input-sm" id="email" name="email"
-                                    placeholder="Email" onkeyup="checkEmail(this.value);" ; required>
+                                    placeholder="Email" onkeyup="checkEmail(this.value);" required>
                                 <div class="invalid-feedback error_2">
                                     Please enter a valid email.
                                 </div>
@@ -60,7 +115,7 @@ include_once 'db.php';
                             <div class="form-group col-md-6 mb-2 p_lzero">
 
                                 <input type="tel" class="form-control input-sm" id="number" name="number"
-                                    placeholder="Number" onkeyup="checkValidateMobile(this.value)" ; required>
+                                    placeholder="Number" onkeyup="checkValidateMobile(this.value);" required>
                                 <div class="invalid-feedback error_3">
                                     Please enter your phone number.
                                 </div>
